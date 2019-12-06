@@ -25,11 +25,6 @@ public class ProblemaA
         		System.out.println(arreglo[i]);
         	}
         	
-        	// Hallar el Suffix Array
-        	
-        	// Hallar el Longest Common Prefix Array usando el SA
-        	
-        	// Hallar el maximo del LCP
         	
         	
         }

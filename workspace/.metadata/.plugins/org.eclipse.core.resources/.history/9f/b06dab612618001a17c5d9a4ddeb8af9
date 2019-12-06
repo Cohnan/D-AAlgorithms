@@ -6,8 +6,7 @@ import java.util.StringTokenizer;
 public class ProblemaA  
 { 
 	private static int[] arreglo; // Cada entrada menor a 10^6 < 2^32
-	private static int[] sufArr;  // Cada entrada menor a N < 10^5 < 2^32
-	private static int[] longComPreArr;  // Cada entrada menor a N < 10^5 < 2^32
+	private static int[] sufarr;  // N < 10^5 < 2^32
 	
     public static void main(String[] args) throws IOException  
     { 
@@ -25,11 +24,6 @@ public class ProblemaA
         		System.out.println(arreglo[i]);
         	}
         	
-        	// Hallar el Suffix Array
-        	
-        	// Hallar el Longest Common Prefix Array usando el SA
-        	
-        	// Hallar el maximo del LCP
         	
         	
         }

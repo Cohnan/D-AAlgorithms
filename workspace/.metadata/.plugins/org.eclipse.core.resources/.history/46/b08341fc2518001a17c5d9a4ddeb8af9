@@ -1,0 +1,22 @@
+import java.io.BufferedReader; 
+import java.io.IOException; 
+import java.io.InputStreamReader; 
+public class ProblemaA  
+{ 
+	private static int[] arreglo;
+	
+    public static void main(String[] args) throws IOException  
+    { 
+        BufferedReader reader =  new BufferedReader(new InputStreamReader(System.in)); 
+        
+        int N = Integer.parseInt(reader.readLine());
+        
+        while (N != 0) {
+        	arreglo = new int[N];
+        	arreglo = reader.readLine().split(" ");
+        	
+        }
+  
+        
+    } 
+}

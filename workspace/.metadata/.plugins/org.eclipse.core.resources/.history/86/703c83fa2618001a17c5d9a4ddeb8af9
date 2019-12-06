@@ -27,9 +27,7 @@ public class ProblemaA
         	
         	// Hallar el Suffix Array
         	
-        	// Hallar el Longest Common Prefix Array usando el SA
-        	
-        	// Hallar el maximo del LCP
+        	// Hallar el Longest Common Prefix Array usando el suffix
         	
         	
         }
