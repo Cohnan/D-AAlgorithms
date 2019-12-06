@@ -23,10 +23,10 @@ def suffix_array_ManberMyers(stri):
     return sort_bucket(stri, [i for i in range(len(stri))])	    
 
 if __name__ == "__main__":
-    #with open("..\MobyDick.txt") as f:
-    #    m = f.read()
-    #stri = m#[:100000]
-    stri = "a"*100000000#	'banana'
+    with open("RText"+input()+".txt") as f:
+        m = f.read()
+    stri = m#[:100000]
+#    stri = "a"*(2**14)#	'banana'
     print(len(stri))
     ##start_time = time.time()
     ##x = get_suffix_array(stri)
