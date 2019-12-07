@@ -1,0 +1,40 @@
+import java.io.BufferedReader; 
+import java.io.IOException; 
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class ProblemaC {
+	
+	private static String linea1;
+	private static String linea2;
+	private static int Max; // < 10^3 < 2x10^9 
+	private static int N; // < 10^6 < 2x10^9
+	
+	private static BufferedReader reader;
+	private static StringTokenizer st;
+
+	public static void main(String[] args) throws IOException  
+    { 
+        reader =  new BufferedReader(new InputStreamReader(System.in));
+        
+        String entrada1 = reader.readLine();
+        String entrada2;
+        
+        while (!entrada1.contentEquals("0 0 0 0")) {
+        		// Entender linea 1
+        	st = new StringTokenizer(entrada1);
+        	Max = Integer.parseInt(st.nextToken());
+        	
+        }
+
+	}
+	
+	private static void leerLinea1() {
+		
+	}
+	
+	private static void leerLinea2() {
+		
+	}
+
+}
