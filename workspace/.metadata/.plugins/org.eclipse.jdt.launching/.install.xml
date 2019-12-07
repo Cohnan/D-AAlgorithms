@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dirs>
+    <entry loc="/usr/lib/jvm/jdk1.8.0_231/bin" stamp="1570270272000"/>
+    <entry loc="/usr/lib/jvm/jdk1.8.0_231" stamp="1570270438000"/>
+    <entry loc="/usr/lib/jvm/jdk1.8.0_231/jre" stamp="1570270270000"/>
     <entry loc="/usr/lib/jvm/java-11-openjdk-amd64" stamp="1565824735937"/>
 </dirs>
