@@ -33,7 +33,6 @@ public class ProblemaC {
         	b = Integer.parseInt(st.nextToken());
         	
         	if (Max < 1 || N < 3) break;
-        	
         		// Inicializar arreglos de vertices
         	x = new int[N+1];
         	y = new int[N+1];

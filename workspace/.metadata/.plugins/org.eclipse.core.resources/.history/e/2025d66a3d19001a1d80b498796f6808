@@ -1,0 +1,38 @@
+import java.io.BufferedReader; 
+import java.io.IOException; 
+import java.io.InputStreamReader;
+import java.util.Comparator;
+import java.util.StringTokenizer; 
+
+public class ProblemaB  
+{ 
+	private static int[] arreglo; // Cada entrada menor a 10^6 < 2x10^9 ~ 2^32
+	private static int[] sufArr;  // Cada entrada menor a N < 10^5 < 2x10^9 ~ 2^32
+	private static int[] longComPreArr;  // Cada entrada menor a N < 10^5 < 2x10^9 ~ 2^32
+	
+    public static void main(String[] args) throws IOException  
+    { 
+        BufferedReader reader =  new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+    }
+    
+    class Person {
+
+        int index;
+        int a;
+        int b;
+
+        Person(int i, int a, int b) {
+            index = i;
+            this.a = a;
+            this.b = b;
+        }
+    }
+    
+    class ComparatorLex implements Comparator<Person> {
+        @Override
+        public int compare(Person p1, Person p2) {
+            return p1.index - p2.index;
+        }
+    }	
+}
