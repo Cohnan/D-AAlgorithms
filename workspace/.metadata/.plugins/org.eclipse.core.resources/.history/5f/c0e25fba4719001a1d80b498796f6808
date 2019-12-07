@@ -4,8 +4,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Dictionary;
-import java.util.Hashtable;
 import java.util.StringTokenizer; 
 
 public class ProblemaB  
@@ -13,9 +11,7 @@ public class ProblemaB
 	private static Persona[] lista;
 	private static int N; 
 	
-	private static ArrayList<ArrayList<Persona>> candidatos;
-	private static Hashtable<Integer, Integer> isMinLex;
-	private static Hashtable<Integer, Integer> isFirstL;
+	private static ArrayList<Persona> candidatos;
 	
     public static void main(String[] args) throws IOException  
     { 
@@ -40,30 +36,13 @@ public class ProblemaB
         		System.out.println(persona);
         	}
         	*/
-        		// Initialize necessary data structures
-        	candidatos = new ArrayList<ArrayList<Persona>>();
-        	isMinLex = new Hashtable<Integer, Integer> ();
-        	isFirstL = new Hashtable<Integer, Integer> ();
+        	
+        	ArrayList<Persona> candidatos = new ArrayList<Persona>();
         	
         	
-        		// Restart
         	N = Integer.parseInt(reader.readLine());
         }
         
-    }
-    
-    private static int iMinLex(int l) {
-    	if (isMinLex.containsKey(l)) {
-    		return candidatos.size(); 
-    	}
-    	return isMinLex.get(l);
-    }
-    
-    private static int iFirstL(int l) {
-    	if (isFirstL.containsKey(l)) {
-    		return candidatos.size(); 
-    	}
-    	return isFirstL.get(l);
     }
     
     public static class Persona {

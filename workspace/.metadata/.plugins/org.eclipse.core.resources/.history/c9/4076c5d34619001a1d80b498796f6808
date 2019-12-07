@@ -2,20 +2,13 @@ import java.io.BufferedReader;
 import java.io.IOException; 
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Dictionary;
-import java.util.Hashtable;
 import java.util.StringTokenizer; 
 
 public class ProblemaB  
 { 
 	private static Persona[] lista;
 	private static int N; 
-	
-	private static ArrayList<ArrayList<Persona>> candidatos;
-	private static Hashtable<Integer, Integer> isMinLex;
-	private static Hashtable<Integer, Integer> isFirstL;
 	
     public static void main(String[] args) throws IOException  
     { 
@@ -32,38 +25,10 @@ public class ProblemaB
         		lista[i] = new Persona(Integer.parseInt(st.nextToken()),Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
         	}
         	
-        	Arrays.sort(lista, new ComparatorA());
         	
-        	/* Print array
-        	System.out.println(N);
-        	for (Persona persona:lista) {
-        		System.out.println(persona);
-        	}
-        	*/
-        		// Initialize necessary data structures
-        	candidatos = new ArrayList<ArrayList<Persona>>();
-        	isMinLex = new Hashtable<Integer, Integer> ();
-        	isFirstL = new Hashtable<Integer, Integer> ();
-        	
-        	
-        		// Restart
         	N = Integer.parseInt(reader.readLine());
         }
         
-    }
-    
-    private static int iMinLex(int l) {
-    	if (isMinLex.containsKey(l)) {
-    		return candidatos.size(); 
-    	}
-    	return isMinLex.get(l);
-    }
-    
-    private static int iFirstL(int l) {
-    	if (isFirstL.containsKey(l)) {
-    		return candidatos.size(); 
-    	}
-    	return isFirstL.get(l);
     }
     
     public static class Persona {
@@ -94,14 +59,14 @@ public class ProblemaB
     public static class ComparatorA implements Comparator<Persona> {
         @Override
         public int compare(Persona p1, Persona p2) {
-            return -(p1.a - p2.a);
+            return p1.a - p2.a;
         }
     }
     
     public static class ComparatorB implements Comparator<Persona> {
         @Override
         public int compare(Persona p1, Persona p2) {
-            return (p1.b - p2.b);
+            return -(p1.b - p2.b);
         }
     }
 }

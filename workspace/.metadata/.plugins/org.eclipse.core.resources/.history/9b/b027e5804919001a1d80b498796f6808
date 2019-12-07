@@ -41,7 +41,7 @@ public class ProblemaB
         	}
         	*/
         		// Initialize necessary data structures
-        	candidatos = new ArrayList<ArrayList<Persona>>();
+        	candidatos = new ArrayList<Persona>();
         	isMinLex = new Hashtable<Integer, Integer> ();
         	isFirstL = new Hashtable<Integer, Integer> ();
         	

@@ -13,9 +13,9 @@ public class ProblemaB
 	private static Persona[] lista;
 	private static int N; 
 	
-	private static ArrayList<ArrayList<Persona>> candidatos;
-	private static Hashtable<Integer, Integer> isMinLex;
-	private static Hashtable<Integer, Integer> isFirstL;
+	private static ArrayList<Persona> candidatos;
+	private static Hashtable<Integer, Integer> minsLex;
+	private static Hashtable<Integer, Integer> firstL;
 	
     public static void main(String[] args) throws IOException  
     { 
@@ -41,9 +41,9 @@ public class ProblemaB
         	}
         	*/
         		// Initialize necessary data structures
-        	candidatos = new ArrayList<ArrayList<Persona>>();
-        	isMinLex = new Hashtable<Integer, Integer> ();
-        	isFirstL = new Hashtable<Integer, Integer> ();
+        	candidatos = new ArrayList<Persona>();
+        	minsLex = new Hashtable<Integer, Integer> ();
+        	firstL = new Hashtable<Integer, Integer> ();
         	
         	
         		// Restart
@@ -53,17 +53,17 @@ public class ProblemaB
     }
     
     private static int iMinLex(int l) {
-    	if (isMinLex.containsKey(l)) {
+    	if (minsLex.containsKey(l)) {
     		return candidatos.size(); 
     	}
-    	return isMinLex.get(l);
+    	return minsLex.get(l);
     }
     
-    private static int iFirstL(int l) {
-    	if (isFirstL.containsKey(l)) {
+    private static int iFirst(int l) {
+    	if (firstL.containsKey(l)) {
     		return candidatos.size(); 
     	}
-    	return isFirstL.get(l);
+    	return firstL.get(l);
     }
     
     public static class Persona {
