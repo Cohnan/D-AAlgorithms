@@ -25,7 +25,9 @@ public class ProblemaB
         		lista[i] = new Persona(Integer.parseInt(st.nextToken()),Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
         	}
         	
-        	
+        	for (Persona persona : lista) {
+        		
+        	}
         	N = Integer.parseInt(reader.readLine());
         }
         

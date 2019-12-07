@@ -18,20 +18,18 @@ public class ProblemaB
         N = Integer.parseInt(reader.readLine());
         
         while (N != 0) {
-        		// Crear arreglo a analizar
         	lista = new Persona[N];
         	for (int i = 0; i < N; i++) {
         		st = new StringTokenizer(reader.readLine());
-        		lista[i] = new Persona(Integer.parseInt(st.nextToken()),Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
+        		lista[i] = new Persona(Integer.parseInt(st.nextToken(), Integer.parseInt(st.nextToken(), Integer.parseInt(st.nextToken());
         	}
         	
-        	
-        	N = Integer.parseInt(reader.readLine());
+
         }
         
     }
     
-    public static class Persona {
+    class Persona {
 
         int index;
         int a;
@@ -42,28 +40,23 @@ public class ProblemaB
             this.a = a;
             this.b = b;
         }
-        
-        @Override
-        public String toString() {
-        	return "(" + index +", "+ a + ", "+ b + ")";
-        }
     }
     
-    public static class ComparatorLex implements Comparator<Persona> {
+    class ComparatorLex implements Comparator<Persona> {
         @Override
         public int compare(Persona p1, Persona p2) {
             return p1.index - p2.index;
         }
     }
     
-    public static class ComparatorA implements Comparator<Persona> {
+    class ComparatorA implements Comparator<Persona> {
         @Override
         public int compare(Persona p1, Persona p2) {
             return p1.a - p2.a;
         }
     }
     
-    public static class ComparatorB implements Comparator<Persona> {
+    class ComparatorB implements Comparator<Persona> {
         @Override
         public int compare(Persona p1, Persona p2) {
             return -(p1.b - p2.b);

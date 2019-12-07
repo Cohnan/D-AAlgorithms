@@ -25,8 +25,7 @@ public class ProblemaB
         		lista[i] = new Persona(Integer.parseInt(st.nextToken()),Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
         	}
         	
-        	
-        	N = Integer.parseInt(reader.readLine());
+
         }
         
     }
@@ -41,11 +40,6 @@ public class ProblemaB
             index = i;
             this.a = a;
             this.b = b;
-        }
-        
-        @Override
-        public String toString() {
-        	return "(" + index +", "+ a + ", "+ b + ")";
         }
     }
     

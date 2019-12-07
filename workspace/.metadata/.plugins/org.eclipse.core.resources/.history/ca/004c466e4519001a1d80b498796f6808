@@ -18,15 +18,13 @@ public class ProblemaB
         N = Integer.parseInt(reader.readLine());
         
         while (N != 0) {
-        		// Crear arreglo a analizar
         	lista = new Persona[N];
         	for (int i = 0; i < N; i++) {
         		st = new StringTokenizer(reader.readLine());
         		lista[i] = new Persona(Integer.parseInt(st.nextToken()),Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
         	}
         	
-        	
-        	N = Integer.parseInt(reader.readLine());
+
         }
         
     }
@@ -41,11 +39,6 @@ public class ProblemaB
             index = i;
             this.a = a;
             this.b = b;
-        }
-        
-        @Override
-        public String toString() {
-        	return "(" + index +", "+ a + ", "+ b + ")";
         }
     }
     
