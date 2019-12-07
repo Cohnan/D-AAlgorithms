@@ -11,8 +11,9 @@ public class ProblemaC {
 	private static int N; // 3 <= N < 10^6 < 2x10^9
 	private static int a;
 	private static int b;
-	private static int[] xs;
-	private static int[] ys;
+	private static int[] x;
+	private static int[] y;
+	private static int res;
 	
 	private static BufferedReader reader;
 	private static StringTokenizer st;
@@ -30,27 +31,57 @@ public class ProblemaC {
         	N = Integer.parseInt(st.nextToken());
         	a = Integer.parseInt(st.nextToken());
         	b = Integer.parseInt(st.nextToken());
-        	
+
         		// Inicializar arreglos de vertices
-        	xs = new int[N];
-        	ys = new int[N];
+        	x = new int[N+1];
+        	y = new int[N+1];
         			
         		// Entender linea 2
+        	st = new StringTokenizer(reader.readLine());
         	for (int i = 0; i < N; i++) {
-        		st = new StringTokenizer(reader.readLine());
-        		xs[i] = Integer.parseInt(st.nextToken());
-        		ys[i] = Integer.parseInt(st.nextToken());
+        		x[i] = Integer.parseInt(st.nextToken());
+        		y[i] = Integer.parseInt(st.nextToken());
         	}
+        	x[N] = x[0];
+        	y[N] = y[0];
+        	
+        		// Resolver el problema para los datos de entrada
+        	resolver();
+        	System.out.println(res);
+        	
+        	entrada1 = reader.readLine();
         }
 
 	}
 	
-	private static void leerLinea1() {
+	private static int resolver() {
+		int crossings = 0;
+		int sgn;
+		int R;
+		res = 2;
 		
+		for (int i = 0; (N-i)*res != 0; i++) {
+			if ( (y[i] <= b && y[i+1] >= b) || (y[i] >= b && y[i+1] <= b) ) {
+					// Determinar si (a, b) esta en la arista
+				if ((x[i] - a)*(y[i+1] - b) - (x[i+1] - a)*(y[i] - b) == 0) {
+					res = 0;
+					break;
+				}
+				
+					// Contar crossings
+				if ( (y[i] <= b && y[i+1] > b) || (y[i] > b && y[i+1] <= b) ) {
+					R = y[i+1] - y[i];
+					sgn = Integer.signum(R);
+					if ( (a-x[i])* R * sgn < sgn * (b - y[i]) * (x[i+1] - x[i])) crossings +=1 ;
+				}
+			}
+		}
+		
+		if (res != 0) {
+			res = (crossings % 2)*2 - 1; 
+		}
+		
+		return res;
 	}
 	
-	private static void leerLinea2() {
-		
-	}
-
 }
