@@ -1,5 +1,14 @@
 // Java code for implementation of above approach 
-import java.util.*; 
+import java.time.Duration;
+import java.time.Instant;
+import java.util.*;
+
+import java.io.BufferedReader; 
+import java.io.IOException; 
+import java.io.InputStreamReader;
+import java.util.StringTokenizer; 
+
+
 class GFG 
 { 
     // Class to store information of a suffix  
@@ -118,22 +127,35 @@ class GFG
     } 
       
     // Driver Code 
-    public static void main(String[] args) 
+    public static void main(String[] args) throws IOException 
     { 
     	String txt = "";
-    	// String to time
-        for (int i = 0; i < (2*2*2*2*2*2*2*2*2*2)*1; i++) {
-        	txt += "a";
-        }
+    			// String to time
+        //for (int i = 0; i < (2*2*2*2*2*2*2*2*2*2)*(2*2*2*2*2)*2*2*2; i++) {
+        //	txt += "a";
+        //}
+    	BufferedReader reader =  new BufferedReader(new InputStreamReader(System.in));
+    	
+    	txt = reader.readLine();
         int n = txt.length();
         
-        long startTime = System.nanoTime();
+        		// Execution and timing: this timing is worthless
+        //long startTime = System.nanoTime();
+        //long startTime2 = System.currentTimeMillis();
+        //Instant start = Instant.now();
+        //long startTime4 = new Date().getTime();
         int[] suff_arr = suffixArray(txt);
-        long endTime = System.nanoTime();
+        //long endTime = System.nanoTime();
+        //long endTime2 = System.currentTimeMillis();
+        //Instant end = Instant.now();
+        //long endTime4 = new Date().getTime();
         
-        System.out.println("Following is suffix array for banana:");
-        System.out.println("Time ms: " + (endTime - startTime)/1000000);
-        printArr(suff_arr, n); 
+        		// Print results
+        //System.out.println("Time ms: " + (endTime - startTime)/1000000);
+        //System.out.println("Time ms: " + (endTime2 - startTime2));
+        //System.out.println("Time ms: " + Duration.between(start, end).toMillis());
+        //System.out.println("Time ms: " + (endTime4 - startTime4));
+        //printArr(suff_arr, n); 
         
     } 
 } 

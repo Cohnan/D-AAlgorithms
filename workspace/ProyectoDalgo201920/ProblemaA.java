@@ -5,9 +5,9 @@ import java.util.StringTokenizer;
 
 public class ProblemaA  
 { 
-	private static int[] arreglo; // Cada entrada menor a 10^6 < 2^32
-	private static int[] sufArr;  // Cada entrada menor a N < 10^5 < 2^32
-	private static int[] longComPreArr;  // Cada entrada menor a N < 10^5 < 2^32
+	private static int[] arreglo; // Cada entrada menor a 10^6 < 2x10^9 ~ 2^32
+	private static int[] sufArr;  // Cada entrada menor a N < 10^5 < 2x10^9 ~ 2^32
+	private static int[] longComPreArr;  // Cada entrada menor a N < 10^5 < 2x10^9 ~ 2^32
 	
     public static void main(String[] args) throws IOException  
     { 
