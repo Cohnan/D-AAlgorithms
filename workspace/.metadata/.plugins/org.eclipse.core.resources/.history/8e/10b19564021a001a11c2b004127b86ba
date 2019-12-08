@@ -1,0 +1,182 @@
+import java.io.BufferedReader; 
+import java.io.IOException; 
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Dictionary;
+import java.util.Hashtable;
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.StringTokenizer; 
+
+public class ProblemaB  
+{ 
+	private static Persona[] lista;
+	private static int N; 
+	
+	private static LinkedList<int[]> candidatos; //Guarda el indice correspondiente
+	//private static Hashtable<Integer, Integer> inFirstL;
+	
+    public static void main(String[] args) throws IOException  
+    { 
+        BufferedReader reader =  new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        
+        N = Integer.parseInt(reader.readLine());
+        
+        while (N != 0) {
+        		// Crear arreglo a analizar
+        	lista = new Persona[N];
+        	for (int i = 0; i < N; i++) {
+        		st = new StringTokenizer(reader.readLine());
+        		lista[i] = new Persona(Integer.parseInt(st.nextToken()),Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
+        	}
+        	
+        	Arrays.sort(lista, new ComparatorA());
+        	
+        	/* Print array
+        	System.out.println(N);
+        	for (Persona persona:lista) {
+        		System.out.println(persona);
+        	}
+        	*/
+        		// Initialize necessary data structures
+        	candidatos = new LinkedList<int[]>();
+        	
+        		// LOOP PRINCIPAL DE CREACION DE RESPUESTA
+        	for (Persona persAct : lista) {
+        		int t = candidatos.size();
+        			
+        		    //######### Si el elemento actual de B es mayor a cualquier otra cabeza de los candidatos //Orden correcto
+        		if (candidatos.size() == 0 || persAct.b > B(candidatos.getLast()[0]) ) { 
+        				// Agregar nueva lista candidata
+        			candidatos.add(new int[] {persAct.index});
+        			
+        				// Actualizar estructuras
+        			
+        			
+        		} else { // Hay al menos un elemento
+        			
+        		    //########## Buscar indice del candidato primer candidato de arriba hacia abajo en el cual podemos anadir el b actual,
+        			// es decir, el primero de arriba a abajo donde el b actual sea ESTRICTAMENTE menor
+            		
+            		ListIterator<int[]> itCandi = candidatos.listIterator(0);
+            		int[] candidAct = itCandi.next();
+            		int tCand = candidAct.length;
+            		
+            		while (candidAct != null && B(candidAct[tCand-1]) <= persAct.b) { //Nunca deberia llegar a null
+            			candidAct = itCandi.next();
+            			tCand = candidAct.length;
+            		}
+            		
+            		//########## Poner nuevo candidato en donde va, sin eliminar aun ningun candidato, y dejar el iterador sobre este
+            		int[] nuevoCand;
+            		// Caso especial: Si resulta que se extendera el ultimo candidato: ya se tuvo en cuenta
+            		
+            		nuevoCand = Arrays.copyOf(candidAct, tCand+1);
+            		nuevoCand[tCand] = persAct.index;
+            		
+            		while ()
+            		
+            		//##########
+        		}
+        		
+        		
+        		
+        	}
+        	
+        		// Restart
+        	N = Integer.parseInt(reader.readLine());
+        }
+        
+    }
+    
+    /*
+    private static int busquedaBinariaCols(int b) {
+    	int lo = 0, hi = candidatos.size() - 1; 
+        while (lo <= hi) { 
+            int m = lo + (hi - lo) / 2; //
+            int elemAct = candidatos.get(m).get(candidatos.get(m).size() - 1).b; 
+            if (elemAct == b) 
+                return m+1; // Maximo hay uno que es igual al que busco
+  
+            if (elemAct < b)  
+                hi = m - 1;	// Por lo que las colas estan ordenadas desccendentemente
+  
+            else
+                lo = m + 1; 
+        } 
+  
+        // if we reach here, then element was 
+        // not present 
+        return lo;
+	}*/
+
+    /*
+    private static int ip(int l) {
+    	if (inFirstL.containsKey(l)) {
+    		return candidatos.size(); 
+    	}
+    	return inFirstL.get(l);
+    }*/
+    
+    private static int A(int i) {
+    	return lista[i].a;
+    }
+    
+    private static int B(int i) {
+    	return lista[i].b;
+    }
+    
+    /*
+    private static void updateFirst(Persona persAct, int l, int i) {
+    	if (ip(l) == i+1) {
+			inFirstL.put(l, i);
+			//
+		} else {
+			//isMinLex.put(l, 
+			//		persAct.index < isMinLex.get(l)? persAct.index : isMinLex.get(l) 
+			//				);  
+		}
+    }*/
+    
+    public static class Persona {
+
+        int index;
+        int a;
+        int b;
+
+        Persona(int i, int a, int b) {
+            index = i;
+            this.a = a;
+            this.b = b;
+        }
+        
+        @Override
+        public String toString() {
+        	return "(" + index +", "+ a + ", "+ b + ")";
+        }
+    }
+    
+    public static class ComparatorLex implements Comparator<Persona> {
+        @Override
+        public int compare(Persona p1, Persona p2) {
+            return p1.index - p2.index;
+        }
+    }
+    
+    public static class ComparatorA implements Comparator<Persona> {
+        @Override
+        public int compare(Persona p1, Persona p2) {
+            return (p1.a - p2.a);
+        }
+    }
+    
+    public static class ComparatorB implements Comparator<Persona> {
+        @Override
+        public int compare(Persona p1, Persona p2) {
+            return -(p1.b - p2.b);
+        }
+    }
+}

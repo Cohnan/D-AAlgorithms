@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.LinkedList;
+import java.util.ListIterator;
 import java.util.StringTokenizer; 
 
 public class ProblemaB  
@@ -13,9 +15,8 @@ public class ProblemaB
 	private static Persona[] lista;
 	private static int N; 
 	
-	private static ArrayList<ArrayList<Persona>> candidatos;
-	private static Hashtable<Integer, Integer> isMinLex;
-	private static Hashtable<Integer, Integer> isFirstL;
+	private static LinkedList<int[]> candidatos; //Guarda el indice correspondiente
+	//private static Hashtable<Integer, Integer> inFirstL;
 	
     public static void main(String[] args) throws IOException  
     { 
@@ -41,24 +42,47 @@ public class ProblemaB
         	}
         	*/
         		// Initialize necessary data structures
-        	candidatos = new ArrayList<ArrayList<Persona>>();
-        	isMinLex = new Hashtable<Integer, Integer> ();
-        	isFirstL = new Hashtable<Integer, Integer> ();
+        	candidatos = new LinkedList<int[]>();
         	
+        		// LOOP PRINCIPAL DE CREACION DE RESPUESTA
         	for (Persona persAct : lista) {
         		int t = candidatos.size();
         			
-        			// Si el elemento actual de b es menor a cualquier otra cabeza de los candidatos
-        		if (candidatos.size() == 0 || persAct.b < candidatos.get(t-1).get(0).b ) {
+        		    //######### Si el elemento actual de B es mayor a cualquier otra cabeza de los candidatos //Orden correcto
+        		if (candidatos.size() == 0 || persAct.b >= B(candidatos.getLast()[0]) ) { 
         				// Agregar nueva lista candidata
-        			candidatos.add( new ArrayList<Persona>() );
-        			candidatos.get(0).add(persAct);
+        			agregar(persAct, t, null);//candidatos.add(new int[] {persAct.index});
         			
         				// Actualizar estructuras
-        			update(persAct, 1, t);
+        			
+        			
+        		} else { // Hay al menos un elemento y el nuevo elementono va al final
+        			
+        		    //########## Buscar indice del primer candidato de arriba hacia abajo en el cual podemos anadir el b actual,
+        			// es decir, el primero de arriba a abajo donde el b actual sea ESTRICTAMENTE menor
+            		
+            		ListIterator<int[]> itCandi = candidatos.listIterator(0);
+            		int[] candidAct = itCandi.next();
+            		int tCand = candidAct.length;
+            		
+            		while (candidAct != null && B(candidAct[tCand-1]) <= persAct.b) { //Nunca deberia llegar a null
+            			candidAct = itCandi.next();
+            			tCand = candidAct.length;
+            		}
+            		
+            		//########## Poner nuevo candidato en donde va, sin eliminar aun ningun candidato, y dejar el iterador sobre este
+            		int[] nuevoCand;
+            		// Caso especial: Si resulta que se extendera el ultimo candidato: ya se tuvo en cuenta
+            		
+            		nuevoCand = Arrays.copyOf(candidAct, tCand+1);
+            		nuevoCand[tCand] = persAct.index;
+            		
+            		while ()
+            		
+            		//##########
         		}
         		
-        		int i = busquedaBinariaCols(persAct.b);
+        		
         		
         	}
         	
@@ -68,6 +92,7 @@ public class ProblemaB
         
     }
     
+    /*
     private static int busquedaBinariaCols(int b) {
     	int lo = 0, hi = candidatos.size() - 1; 
         while (lo <= hi) { 
@@ -86,32 +111,40 @@ public class ProblemaB
         // if we reach here, then element was 
         // not present 
         return lo;
+	}*/
+
+    /*
+    private static int ip(int l) {
+    	if (inFirstL.containsKey(l)) {
+    		return candidatos.size(); 
+    	}
+    	return inFirstL.get(l);
+    }*/
+    
+    private static void agregar(Persona persAct, int t, ListIterator<int[]> listIterator) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	private static int iMinLex(int l) {
-    	if (isMinLex.containsKey(l)) {
-    		return candidatos.size(); 
-    	}
-    	return isMinLex.get(l);
+	private static int A(int i) {
+    	return lista[i].a;
     }
     
-    private static int iFirstL(int l) {
-    	if (isFirstL.containsKey(l)) {
-    		return candidatos.size(); 
-    	}
-    	return isFirstL.get(l);
+    private static int B(int i) {
+    	return lista[i].b;
     }
     
-    private static void update(Persona persAct, int l, int t) {
-    	if (iFirstL(l) == t+1) {
-			isFirstL.put(l, t);
-			isMinLex.put(l, t);
+    /*
+    private static void updateFirst(Persona persAct, int l, int i) {
+    	if (ip(l) == i+1) {
+			inFirstL.put(l, i);
+			//
 		} else {
-			isMinLex.put(l, 
-					persAct.index < isMinLex.get(l)? persAct.index : isMinLex.get(l) 
-							);  
+			//isMinLex.put(l, 
+			//		persAct.index < isMinLex.get(l)? persAct.index : isMinLex.get(l) 
+			//				);  
 		}
-    }
+    }*/
     
     public static class Persona {
 
