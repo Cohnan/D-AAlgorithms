@@ -46,7 +46,7 @@ public class ProblemaB
         		 * ****************************************************************
         		 */
         	for (Persona persAct : lista) {
-        		System.out.println("("+persAct.index + ", " + persAct.b + ")");
+        		System.out.pritnln("("+persAct.index + ", " + persAct.b + ")");
         		
         		int t = candidatos.size();
         		

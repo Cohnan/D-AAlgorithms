@@ -26,7 +26,7 @@ public class ProblemaB
         N = Integer.parseInt(reader.readLine());
         
         while (N != 0) {
-        	//System.out.println("##########################################3########");
+        	//System.out.println("#################################");
         		// Crear arreglo a analizar
         	lista = new Persona[N];
         	for (int i = 0; i < N; i++) {
@@ -37,6 +37,12 @@ public class ProblemaB
         	listaOri = Arrays.copyOf(lista, N); 
         	Arrays.sort(lista, new ComparatorA());
         	
+        	/* Print array
+        	System.out.println(N);
+        	for (Persona persona:lista) {
+        		System.out.println(persona);
+        	}
+        	*/
         		// Initialize necessary data structures
         	candidatos = new LinkedList<int[]>();
         	
@@ -46,14 +52,13 @@ public class ProblemaB
         		 * ****************************************************************
         		 */
         	for (Persona persAct : lista) {
-        		System.out.println("("+persAct.index + ", " + persAct.b + ")");
-        		
+        		//System.out.println(persAct.index + " " + persAct.a + " " + persAct.b);
         		int t = candidatos.size();
-        		
+        			
         		    //########## Caso especial: no hay aun candidatos
         		if (candidatos.size() == 0) { 
         			candidatos.add(new int[] {persAct.index});
-        			
+        			//imprimirCandidatos();
         		} else if(B(candidatos.getLast()[0]) <= persAct.b){
         			if (B(candidatos.getLast()[0]) < persAct.b) candidatos.set(candidatos.size()-1, new int[] {persAct.index});
         			
@@ -98,16 +103,13 @@ public class ProblemaB
             		} // Sale cuando candidAct (i) es inferior entre los de esta longitud
             		System.out.println("imL: " + imL);
             		System.out.print("Ind inferior "+ i); System.out.println(" Indic it " + (itCandid.nextIndex() - 1)); //System.out.println("candidato inferior " + candidAct[candidAct.length-1]);
-            		
             		//########## Crear el nuevo candidato basado en candidmL
-            		
             		int[] nuevoCand;
             		
             		nuevoCand = Arrays.copyOf(candidmL, candidmL.length + 1);
             		nuevoCand[candidmL.length] = persAct.index;
             		
             		//########## Buscar indice donde ira el promovido (i.e. el del primero de su longitud vieja) -> i
-            		
             		itCandid.previous();
             		while (itCandid.hasPrevious()) { // Se que empiezo en uno de la longitud vieja            			
             			candidAct = itCandid.previous(); i -= 1; 

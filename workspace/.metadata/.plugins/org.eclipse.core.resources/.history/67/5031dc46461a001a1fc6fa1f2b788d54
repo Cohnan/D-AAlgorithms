@@ -46,10 +46,8 @@ public class ProblemaB
         		 * ****************************************************************
         		 */
         	for (Persona persAct : lista) {
-        		System.out.println("("+persAct.index + ", " + persAct.b + ")");
-        		
         		int t = candidatos.size();
-        		
+        			
         		    //########## Caso especial: no hay aun candidatos
         		if (candidatos.size() == 0) { 
         			candidatos.add(new int[] {persAct.index});
@@ -107,7 +105,6 @@ public class ProblemaB
             		nuevoCand[candidmL.length] = persAct.index;
             		
             		//########## Buscar indice donde ira el promovido (i.e. el del primero de su longitud vieja) -> i
-            		
             		itCandid.previous();
             		while (itCandid.hasPrevious()) { // Se que empiezo en uno de la longitud vieja            			
             			candidAct = itCandid.previous(); i -= 1; 
