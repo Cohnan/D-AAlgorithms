@@ -82,24 +82,19 @@ public class ProblemaB
             		while (itCandid.hasNext()) {
             			candidAct = itCandid.next(); i += 1; // Avanzar en 1
             			
-            			if (candidAct.length < tCand) {
-            				candidAct = itCandid.previous(); i -= 1; // Creo que la puedo borrar
-            				break;
-            			}
+            			if (candidAct.length < tCand) break;
             			
-            			if (compLex.compare(candidAct, candidmL) < 0) { // Actualizar candidato menor lexicog
-            				imL = i;
-            				candidmL = candidAct;
-            			}
-            		} // Sale cuando candidAct es el de mas abajo entre los de esta longitud
+            			if (compLex(candidAct, candidmL))
+            		}
             		
             		//########## Crear nuevo candidato
             		int[] nuevoCand;
             		
-            		nuevoCand = Arrays.copyOf(candidmL, candidmL.length + 1);
-            		nuevoCand[candidmL.length + 1] = persAct.index;
+            		nuevoCand = Arrays.copyOf(candidAct, tCand+1);
+            		nuevoCand[tCand] = persAct.index;
             		
-            		//########## Buscar indice donde ira el promovido (i.e. el del primero de su longitud vieja)
+            		//########## Buscar indice donde ira (el del primero de su longitud vieja)
+            		// e ir guardando aquellos de su longitud vieja que encuentre en el camino
             		int im = imL;
             		
             		while (im > 0) {

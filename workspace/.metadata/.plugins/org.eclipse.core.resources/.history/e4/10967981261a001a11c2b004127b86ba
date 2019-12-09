@@ -83,7 +83,7 @@ public class ProblemaB
             			candidAct = itCandid.next(); i += 1; // Avanzar en 1
             			
             			if (candidAct.length < tCand) {
-            				candidAct = itCandid.previous(); i -= 1; // Creo que la puedo borrar
+            				candidAct = itCandid.previous(); i -= 1;
             				break;
             			}
             			
@@ -99,7 +99,8 @@ public class ProblemaB
             		nuevoCand = Arrays.copyOf(candidmL, candidmL.length + 1);
             		nuevoCand[candidmL.length + 1] = persAct.index;
             		
-            		//########## Buscar indice donde ira el promovido (i.e. el del primero de su longitud vieja)
+            		//########## Buscar indice donde ira (el del primero de su longitud vieja)
+            		// e ir guardando aquellos de su longitud vieja que encuentre en el camino
             		int im = imL;
             		
             		while (im > 0) {

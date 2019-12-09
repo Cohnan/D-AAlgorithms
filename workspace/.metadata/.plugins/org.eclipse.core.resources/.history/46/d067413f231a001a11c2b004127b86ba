@@ -73,33 +73,27 @@ public class ProblemaB
             			i += 1;
             		}
             		
-            		//########## Buscar, a partir del indice inicial i, el candidato hacia abajo de la misma longitud que es menor lexicograficamente
-            		// pues es este el que me interesa promover y tener en mente
+            		//########## Buscar, a partir del indice ii, el candidato hacia abajo de la misma longitud menor lexicograficamente
+            		// pues es este el que me interesa promover
             		int imL = i;
             		int[] candidmL = candidAct;
-            		ComparatorLex compLex = new ComparatorLex();
             		
             		while (itCandid.hasNext()) {
-            			candidAct = itCandid.next(); i += 1; // Avanzar en 1
+            			candidAct = itCandid.next(); i += 1;
             			
-            			if (candidAct.length < tCand) {
-            				candidAct = itCandid.previous(); i -= 1; // Creo que la puedo borrar
-            				break;
-            			}
+            			if (candidAct.length < tCand) break;
             			
-            			if (compLex.compare(candidAct, candidmL) < 0) { // Actualizar candidato menor lexicog
-            				imL = i;
-            				candidmL = candidAct;
-            			}
-            		} // Sale cuando candidAct es el de mas abajo entre los de esta longitud
+            			
+            		}
             		
             		//########## Crear nuevo candidato
             		int[] nuevoCand;
             		
-            		nuevoCand = Arrays.copyOf(candidmL, candidmL.length + 1);
-            		nuevoCand[candidmL.length + 1] = persAct.index;
+            		nuevoCand = Arrays.copyOf(candidAct, tCand+1);
+            		nuevoCand[tCand] = persAct.index;
             		
-            		//########## Buscar indice donde ira el promovido (i.e. el del primero de su longitud vieja)
+            		//########## Buscar indice donde ira (el del primero de su longitud vieja)
+            		// e ir guardando aquellos de su longitud vieja que encuentre en el camino
             		int im = imL;
             		
             		while (im > 0) {
@@ -201,19 +195,15 @@ public class ProblemaB
     public static class ComparatorLex implements Comparator<int[]> {
         @Override
         public int compare(int[] i1, int[] i2) {
-            if (i1.length == 0) {
-            	if (i2.length == 0) return  0;
-            	return 1;
-            }
-            
+            if (i1.length == 0) return  1;
             if (i2.length == 0) return -1;
             
         	for (int i = 0; i < Math.min(i1.length, i2.length); i++) {
         		if (i1[1] > i2[i]) return 1;
         		else if (i1[1] < i2[i]) return -1;
         	}
-        	// Si todos los indices son iguales
-        	return -(i1.length - i2.length);
+        	
+        	return -i1.length + i2.length;
         }
     }
     
