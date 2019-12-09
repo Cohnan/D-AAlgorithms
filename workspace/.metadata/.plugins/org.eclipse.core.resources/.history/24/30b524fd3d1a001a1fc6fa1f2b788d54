@@ -149,10 +149,7 @@ public class ProblemaB
         			if (comp.compare(candidato, respuesta) < 0) respuesta = candidato;
         		}
         		System.out.println(respuesta.length);
-        		String resp = "";
-    			for (int k = 0; k < respuesta.length-1; k++) resp += respuesta[k] + " ";
-    			resp += respuesta[respuesta.length-1];
-    			System.out.println(resp);
+    			System.out.println(Arrays.toString(respuesta));
         	}
         		// Restart
         	N = Integer.parseInt(reader.readLine());

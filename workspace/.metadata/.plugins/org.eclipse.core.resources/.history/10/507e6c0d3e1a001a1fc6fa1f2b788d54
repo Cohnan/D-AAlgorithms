@@ -152,7 +152,6 @@ public class ProblemaB
         		String resp = "";
     			for (int k = 0; k < respuesta.length-1; k++) resp += respuesta[k] + " ";
     			resp += respuesta[respuesta.length-1];
-    			System.out.println(resp);
         	}
         		// Restart
         	N = Integer.parseInt(reader.readLine());
