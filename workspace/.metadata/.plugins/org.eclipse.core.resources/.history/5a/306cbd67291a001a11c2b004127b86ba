@@ -53,7 +53,7 @@ public class ProblemaB
         			
         		    // Caso especial: no hay aun candidatos
         		if (candidatos.size() == 0) { 
-        			candidatos.add(new int[] {persAct.index});
+        			agregar(new int[] {persAct.b}, t, null);//candidatos.add(new int[] {persAct.index});
         			
         		} else { // Hay al menos un candidato
         			
@@ -138,6 +138,11 @@ public class ProblemaB
     	}
     	return inFirstL.get(l);
     }*/
+    
+    private static void agregar(int[] nueva, int t, ListIterator<int[]> listIterator) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	private static int A(int i) {
     	return lista[i].a;

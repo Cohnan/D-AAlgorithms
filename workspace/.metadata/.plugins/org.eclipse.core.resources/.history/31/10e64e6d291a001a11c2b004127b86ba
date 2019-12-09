@@ -139,6 +139,7 @@ public class ProblemaB
     	return inFirstL.get(l);
     }*/
 
+
 	private static int A(int i) {
     	return lista[i].a;
     }

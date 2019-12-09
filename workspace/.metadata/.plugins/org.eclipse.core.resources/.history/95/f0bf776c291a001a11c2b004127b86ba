@@ -138,6 +138,11 @@ public class ProblemaB
     	}
     	return inFirstL.get(l);
     }*/
+    
+    private static void agregar(int[] nueva, int t, ListIterator<int[]> listIterator) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	private static int A(int i) {
     	return lista[i].a;
