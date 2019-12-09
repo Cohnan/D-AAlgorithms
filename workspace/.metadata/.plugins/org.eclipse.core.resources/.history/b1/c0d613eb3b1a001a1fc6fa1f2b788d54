@@ -26,7 +26,7 @@ public class ProblemaB
         N = Integer.parseInt(reader.readLine());
         
         while (N != 0) {
-        	//System.out.println("#################################");
+        	System.out.println("#################################");
         		// Crear arreglo a analizar
         	lista = new Persona[N];
         	for (int i = 0; i < N; i++) {
@@ -52,7 +52,7 @@ public class ProblemaB
         		 * ****************************************************************
         		 */
         	for (Persona persAct : lista) {
-        		//System.out.println(persAct.index + " " + persAct.a + " " + persAct.b);
+        		System.out.println(persAct.index + " " + persAct.a + " " + persAct.b);
         		int t = candidatos.size();
         			
         		    //########## Caso especial: no hay aun candidatos
@@ -80,7 +80,7 @@ public class ProblemaB
             			
             			if (B(candidAct[tCand-1]) > persAct.b) break;
             		}
-            		//System.out.print("Primer candidato " + i); System.out.println(" tCand " + tCand);
+            		System.out.print("Primer candidato " + i); System.out.println(" tCand " + tCand);
             		//########## Buscar, a partir del indice inicial i, el candidato hacia abajo de la misma longitud que es menor lexicograficamente
             		// pues es este el que me interesa promover y tener en mente
             		int imL = i;

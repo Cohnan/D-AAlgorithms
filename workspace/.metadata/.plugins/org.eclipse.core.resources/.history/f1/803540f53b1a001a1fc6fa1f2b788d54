@@ -26,7 +26,7 @@ public class ProblemaB
         N = Integer.parseInt(reader.readLine());
         
         while (N != 0) {
-        	//System.out.println("#################################");
+        	System.out.println("#################################");
         		// Crear arreglo a analizar
         	lista = new Persona[N];
         	for (int i = 0; i < N; i++) {

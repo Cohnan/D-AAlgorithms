@@ -26,7 +26,7 @@ public class ProblemaB
         N = Integer.parseInt(reader.readLine());
         
         while (N != 0) {
-        	//System.out.println("#################################");
+        	System.out.println("#################################");
         		// Crear arreglo a analizar
         	lista = new Persona[N];
         	for (int i = 0; i < N; i++) {
@@ -52,19 +52,16 @@ public class ProblemaB
         		 * ****************************************************************
         		 */
         	for (Persona persAct : lista) {
-        		//System.out.println(persAct.index + " " + persAct.a + " " + persAct.b);
+        		System.out.println(persAct.index + " " + persAct.a + " " + persAct.b);
         		int t = candidatos.size();
         			
         		    //########## Caso especial: no hay aun candidatos
         		if (candidatos.size() == 0) { 
         			candidatos.add(new int[] {persAct.index});
         			imprimirCandidatos();
-        		} else if(B(candidatos.getLast()[0]) <= persAct.b){
-        			if (B(candidatos.getLast()[0]) < persAct.b) candidatos.set(candidatos.size()-1, new int[] {persAct.index});
-        			
-        			// dlc son iguales, asi que se deja el menor lexicograficamente
-        			else if (candidatos.getLast()[0] > persAct.index) candidatos.set(candidatos.size()-1, new int[] {persAct.index});
-        		} else { // Hay al menos un candidato
+        		} else if(B(candidatos.getLast()) < persAct.b){
+        			{ // Hay al menos un candidato
+        		} else {
         			
         		    //########## Buscar indice del primer candidato de arriba hacia abajo en el cual podemos anadir el b actual,
         			// es decir, el primero de arriba a abajo donde el b actual sea ESTRICTAMENTE menor
@@ -80,7 +77,7 @@ public class ProblemaB
             			
             			if (B(candidAct[tCand-1]) > persAct.b) break;
             		}
-            		//System.out.print("Primer candidato " + i); System.out.println(" tCand " + tCand);
+            		System.out.print("Primer candidato " + i); System.out.println(" tCand " + tCand);
             		//########## Buscar, a partir del indice inicial i, el candidato hacia abajo de la misma longitud que es menor lexicograficamente
             		// pues es este el que me interesa promover y tener en mente
             		int imL = i;
@@ -101,8 +98,8 @@ public class ProblemaB
             				candidmL = candidAct;
             			}
             		} // Sale cuando candidAct (i) es inferior entre los de esta longitud
-            		//System.out.println("imL: " + imL);
-            		//System.out.print("Ind inferior "+ i); System.out.println(" Indic it " + (itCandid.nextIndex() - 1)); //System.out.println("candidato inferior " + candidAct[candidAct.length-1]);
+            		System.out.println("imL: " + imL);
+            		System.out.print("Ind inferior "+ i); System.out.println(" Indic it " + (itCandid.nextIndex() - 1)); //System.out.println("candidato inferior " + candidAct[candidAct.length-1]);
             		//########## Crear el nuevo candidato basado en candidmL
             		int[] nuevoCand;
             		
@@ -120,7 +117,7 @@ public class ProblemaB
             				break;
             			}
             		}
-            		//System.out.println("Indice de promocion " + i); 
+            		System.out.println("Indice de promocion " + i); 
             		//########## Borrar los elementos de longitud vieja que no me interesan
             		// i.e. todos los elementos desde i inclusivo (i.e. primero de longitud vieja) hasta imL (exclusivo)
             		for (int j = i; j < imL; j++) candidatos.remove(j);  // THIS MIGHT BE EXPENSIVE  TODO
@@ -133,12 +130,11 @@ public class ProblemaB
             		
             		//######### Agregar candidato nuevo!
             		candidatos.add(i, nuevoCand);
-            		//imprimirCandidatos();
+            		imprimirCandidatos();
         		}
         		
         	}
-        	System.out.println("RES");
-        	imprimirCandidatos();
+        	
         		// Restart
         	N = Integer.parseInt(reader.readLine());
         }
