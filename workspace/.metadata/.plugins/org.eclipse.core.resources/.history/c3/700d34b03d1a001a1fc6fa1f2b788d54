@@ -147,9 +147,10 @@ public class ProblemaB
         		for (int [] candidato : candidatos) {
         			if (candidato.length != respuesta.length) break;
         			if (comp.compare(candidato, respuesta) < 0) respuesta = candidato;
+        			
+        			System.out.println(respuesta.length);
+        			System.out.println(Arrays.toString(respuesta));
         		}
-        		System.out.println(respuesta.length);
-    			System.out.println(Arrays.toString(respuesta));
         	}
         		// Restart
         	N = Integer.parseInt(reader.readLine());

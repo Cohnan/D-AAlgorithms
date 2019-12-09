@@ -147,9 +147,10 @@ public class ProblemaB
         		for (int [] candidato : candidatos) {
         			if (candidato.length != respuesta.length) break;
         			if (comp.compare(candidato, respuesta) < 0) respuesta = candidato;
+        			
+        			System.out.println(respuesta.length);
+        			System.out.println(Arrays.toString(respuesta));
         		}
-        		System.out.println(respuesta.length);
-    			System.out.println(Arrays.toString(respuesta));
         	}
         		// Restart
         	N = Integer.parseInt(reader.readLine());
@@ -202,8 +203,8 @@ public class ProblemaB
     public static class ComparatorLex implements Comparator<int[]> {
         @Override
         public int compare(int[] i1, int[] i2) {
-        	//System.out.println("i1 " + Arrays.toString(i1));
-        	//System.out.println("i2 " + Arrays.toString(i2));
+        	System.out.println("i1 " + Arrays.toString(i1));
+        	System.out.println("i2 " + i2);
             if (i1.length == 0) {
             	if (i2.length == 0) return  0;
             	return 1;
@@ -212,8 +213,8 @@ public class ProblemaB
             if (i2.length == 0) return -1;
             
         	for (int i = 0; i < Math.min(i1.length, i2.length); i++) {
-        		if (i1[i] > i2[i]) return 1;
-        		else if (i1[i] < i2[i]) return -1;
+        		if (i1[1] > i2[i]) return 1;
+        		else if (i1[1] < i2[i]) return -1;
         	}
         	// Si todos los indices son iguales
         	return -(i1.length - i2.length);
