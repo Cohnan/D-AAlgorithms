@@ -137,7 +137,6 @@ public class ProblemaB
         		}
         		
         	}
-        		//################# Dar respuesta para este TestCase
         	int[] respuesta = candidatos.getFirst();
         	
         	if (respuesta.length == 1) {
@@ -232,7 +231,6 @@ public class ProblemaB
     }
 
     public static void imprimirCandidatos() {
-    	System.out.println("##########################");
     	ListIterator<int[]> it = candidatos.listIterator();
     	int[] candidato;
     	String lineC = "";
@@ -243,9 +241,9 @@ public class ProblemaB
     		for (Integer k : candidato) {
     			lineC += "(" + k + ", " + B(k) + ") :: ";
     		}
-    		System.out.println(lineC);
+    		//System.out.println(lineC);
     		lineC = "";
     	}
-    	System.out.println("##########################");
+    	
     }
 }

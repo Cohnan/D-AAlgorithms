@@ -232,7 +232,6 @@ public class ProblemaB
     }
 
     public static void imprimirCandidatos() {
-    	System.out.println("##########################");
     	ListIterator<int[]> it = candidatos.listIterator();
     	int[] candidato;
     	String lineC = "";
@@ -246,6 +245,6 @@ public class ProblemaB
     		System.out.println(lineC);
     		lineC = "";
     	}
-    	System.out.println("##########################");
+    	
     }
 }
