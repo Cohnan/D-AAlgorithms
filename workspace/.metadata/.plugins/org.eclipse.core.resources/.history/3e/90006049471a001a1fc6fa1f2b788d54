@@ -46,7 +46,7 @@ public class ProblemaB
         		 * ****************************************************************
         		 */
         	for (Persona persAct : lista) {
-        		//System.out.println("("+persAct.index + ", " + persAct.b + ")");
+        		System.out.println("("+persAct.index + ", " + persAct.b + ")");
         		
         		int t = candidatos.size();
         		
@@ -75,7 +75,7 @@ public class ProblemaB
             			
             			if (B(candidAct[tCand-1]) > persAct.b) break;
             		}
-            		//System.out.print("Primer candidato " + i); System.out.println(" tCand " + tCand);
+            		System.out.print("Primer candidato " + i); System.out.println(" tCand " + tCand);
             		//########## Buscar, a partir del indice inicial i, el candidato hacia abajo de la misma longitud que es menor lexicograficamente
             		// pues es este el que me interesa promover y tener en mente
             		int imL = i;
@@ -96,8 +96,8 @@ public class ProblemaB
             				candidmL = candidAct;
             			}
             		} // Sale cuando candidAct (i) es inferior entre los de esta longitud
-            		//System.out.println("imL: " + imL);
-            		//System.out.print("Ind inferior "+ i); System.out.println(" Indic it " + (itCandid.nextIndex() - 1)); //System.out.println("candidato inferior " + candidAct[candidAct.length-1]);
+            		System.out.println("imL: " + imL);
+            		System.out.print("Ind inferior "+ i); System.out.println(" Indic it " + (itCandid.nextIndex() - 1)); //System.out.println("candidato inferior " + candidAct[candidAct.length-1]);
             		
             		//########## Crear el nuevo candidato basado en candidmL
             		
@@ -118,7 +118,7 @@ public class ProblemaB
             			}
             		}
             		//i = itCandid.nextIndex();
-            		//System.out.println("Indice de promocion " + i); 
+            		System.out.println("Indice de promocion " + i); 
             		//########## Borrar los elementos de longitud vieja que no me interesan
             		// i.e. todos los elementos desde i inclusivo (i.e. primero de longitud vieja) hasta imL (exclusivo)
             		for (int j = imL-1; j >= i; j--) candidatos.remove(j);  // THIS MIGHT BE EXPENSIVE  TODO
@@ -131,7 +131,7 @@ public class ProblemaB
             		
             		//######### Agregar candidato nuevo!
             		candidatos.add(i, nuevoCand);
-            		//imprimirCandidatos();
+            		imprimirCandidatos();
         		}
         		
         	}

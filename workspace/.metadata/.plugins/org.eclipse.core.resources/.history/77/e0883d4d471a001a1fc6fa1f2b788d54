@@ -131,7 +131,7 @@ public class ProblemaB
             		
             		//######### Agregar candidato nuevo!
             		candidatos.add(i, nuevoCand);
-            		//imprimirCandidatos();
+            		imprimirCandidatos();
         		}
         		
         	}
