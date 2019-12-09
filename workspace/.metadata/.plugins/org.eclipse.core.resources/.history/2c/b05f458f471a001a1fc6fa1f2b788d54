@@ -121,7 +121,7 @@ public class ProblemaB
             		//System.out.println("Indice de promocion " + i); 
             		//########## Borrar los elementos de longitud vieja que no me interesan
             		// i.e. todos los elementos desde i inclusivo (i.e. primero de longitud vieja) hasta imL (exclusivo)
-            		for (int j = imL-1; j >= i; j--) candidatos.remove(j);  // THIS MIGHT BE EXPENSIVE  TODO: NO!! si borro esta linea se vuelve 5 veces mas lento!
+            		//for (int j = imL-1; j >= i; j--) candidatos.remove(j);  // THIS MIGHT BE EXPENSIVE  TODO
             		
             		
             		//######### Borrar los elementos de la longitud nueva que no me interesan  TODO
