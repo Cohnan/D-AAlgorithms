@@ -93,12 +93,6 @@ public class ProblemaB
             			}
             		} // Sale cuando candidAct es el de mas abajo entre los de esta longitud
             		
-            		//########## Crear el nuevo candidato basado en candidmL
-            		int[] nuevoCand;
-            		
-            		nuevoCand = Arrays.copyOf(candidmL, candidmL.length + 1);
-            		nuevoCand[candidmL.length + 1] = persAct.index;
-            		
             		//########## Buscar indice donde ira el promovido (i.e. el del primero de su longitud vieja)
             		while (itCandid.hasPrevious()) { // Se que empiezo en uno de la longitud vieja
             			candidAct = itCandid.previous(); i -= 1; // Retroceder en 1
@@ -109,19 +103,17 @@ public class ProblemaB
             			}
             		}
             		
-            		//########## Borrar los elementos de longitud vieja que no me interesan TODO
-            		// i.e. todos los elementos desde i inclusivo (i.e. primero de longitud vieja) hasta imL (exclusivo)
-            		for (int j = i; j < imL; j++) candidatos.remove(j);  // THIS MIGHT BE EXPENSIVE
+            		//########## Crear nuevo candidato
+            		int[] nuevoCand;
             		
+            		nuevoCand = Arrays.copyOf(candidmL, candidmL.length + 1);
+            		nuevoCand[candidmL.length + 1] = persAct.index;
             		
-            		//######### Borrar los elementos de la longitud nueva que no me interesan  TODO
-            		// (menores lexicograficamente, necesariamente tendran menor potencial de extension pues sus colas son mayores o iguales a la que estoy agregando
-            		// Mantener i como indice en el cual se agregara el nuevo candidato
+            		//########## Borrar todos los elementos desde i inclusivo (primero de longitud vieja) hasta imL (exclusivo)
             		
-            		
-            		//######### Agregar candidato nuevo!
-            		candidatos.add(nuevoCand);
-        		}
+        		//}
+        		
+        		
         		
         	}
         	
@@ -131,7 +123,28 @@ public class ProblemaB
         
     }
     
-    /* MIGHT BE WORTH IT
+    /*
+    private static int busquedaBinariaCols(int b) {
+    	int lo = 0, hi = candidatos.size() - 1; 
+        while (lo <= hi) { 
+            int m = lo + (hi - lo) / 2; //
+            int elemAct = candidatos.get(m).get(candidatos.get(m).size() - 1).b; 
+            if (elemAct == b) 
+                return m+1; // Maximo hay uno que es igual al que busco
+  
+            if (elemAct < b)  
+                hi = m - 1;	// Por lo que las colas estan ordenadas desccendentemente
+  
+            else
+                lo = m + 1; 
+        } 
+  
+        // if we reach here, then element was 
+        // not present 
+        return lo;
+	}*/
+
+    /*
     private static int ip(int l) {
     	if (inFirstL.containsKey(l)) {
     		return candidatos.size(); 
