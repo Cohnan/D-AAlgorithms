@@ -16,7 +16,6 @@ public class ProblemaB
 	private static int N; 
 	
 	private static LinkedList<int[]> candidatos; //Guarda el indice correspondiente
-	//private static Hashtable<Integer, Integer> inFirstL;
 	
     public static void main(String[] args) throws IOException  
     { 
@@ -30,7 +29,7 @@ public class ProblemaB
         	lista = new Persona[N];
         	for (int i = 0; i < N; i++) {
         		st = new StringTokenizer(reader.readLine());
-        		lista[i] = new Persona(Integer.parseInt(st.nextToken()),Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
+        		lista[i] = new Persona(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
         	}
         	
         	Arrays.sort(lista, new ComparatorA());
@@ -44,43 +43,72 @@ public class ProblemaB
         		// Initialize necessary data structures
         	candidatos = new LinkedList<int[]>();
         	
-        		// LOOP PRINCIPAL DE CREACION DE RESPUESTA
+        		/* 
+        		 * ****************************************************************
+        		 * 			LOOP PRINCIPAL DE CREACION DE RESPUESTA
+        		 * ****************************************************************
+        		 */
         	for (Persona persAct : lista) {
         		int t = candidatos.size();
         			
-        		    //######### Si el elemento actual de B es mayor a cualquier otra cabeza de los candidatos //Orden correcto
-        		if (candidatos.size() == 0 || persAct.b >= B(candidatos.getLast()[0]) ) { 
-        				// Agregar nueva lista candidata
-        			agregar(persAct, t, null);//candidatos.add(new int[] {persAct.index});
+        		    // Caso especial: no hay aun candidatos
+        		if (candidatos.size() == 0) { 
+        			agregar(new int[] {persAct.b}, t, null);//candidatos.add(new int[] {persAct.index});
         			
-        				// Actualizar estructuras
-        			
-        			
-        		} else { // Hay al menos un elemento y el nuevo elementono va al final
+        		} else { // Hay al menos un candidato
         			
         		    //########## Buscar indice del primer candidato de arriba hacia abajo en el cual podemos anadir el b actual,
         			// es decir, el primero de arriba a abajo donde el b actual sea ESTRICTAMENTE menor
             		
-            		ListIterator<int[]> itCandi = candidatos.listIterator(0);
-            		int[] candidAct = itCandi.next();
-            		int tCand = candidAct.length;
+            		ListIterator<int[]> itCandid = candidatos.listIterator(0);
+            		int[] candidAct = new int[0];
+            		int tCand = 0;
+            		int i = 0;
             		
-            		while (candidAct != null && B(candidAct[tCand-1]) <= persAct.b) { //Nunca deberia llegar a null
-            			candidAct = itCandi.next();
+            		while (itCandid.hasNext()) {
+            			candidAct = itCandid.next();
             			tCand = candidAct.length;
+            			
+            			if (B(candidAct[tCand-1]) > persAct.b) break;
+            			i += 1;
             		}
             		
-            		//########## Poner nuevo candidato en donde va, sin eliminar aun ningun candidato, y dejar el iterador sobre este
+            		//########## Buscar, a partir del indice ii, el candidato hacia abajo de la misma longitud menor lexicograficamente
+            		// pues es este el que me interesa promover
+            		int imL = i;
+            		int[] candidmL = candidAct;
+            		
+            		while (itCandid.hasNext()) {
+            			candidAct = itCandid.next(); i += 1;
+            			
+            			if (candidAct.length < tCand) break;
+            			
+            			
+            		}
+            		
+            		//########## Crear nuevo candidato
             		int[] nuevoCand;
-            		// Caso especial: Si resulta que se extendera el ultimo candidato: ya se tuvo en cuenta
             		
             		nuevoCand = Arrays.copyOf(candidAct, tCand+1);
             		nuevoCand[tCand] = persAct.index;
             		
-            		while ()
+            		//########## Buscar indice donde ira (el del primero de su longitud vieja)
+            		// e ir guardando aquellos de su longitud vieja que encuentre en el camino
+            		int im = imL;
+            		
+            		while (im > 0) {
+            			candidAct = itCandid.previous(); // No error
+            			
+            			if (candidAct.length > tCand) break;
+            			
+            			im -= 1; // Indice actual
+            			if ()
+            			
+            		}
+            		
             		
             		//##########
-        		}
+        		//}
         		
         		
         		
@@ -121,7 +149,7 @@ public class ProblemaB
     	return inFirstL.get(l);
     }*/
     
-    private static void agregar(Persona persAct, int t, ListIterator<int[]> listIterator) {
+    private static void agregar(int[] nueva, int t, ListIterator<int[]> listIterator) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -164,10 +192,13 @@ public class ProblemaB
         }
     }
     
-    public static class ComparatorLex implements Comparator<Persona> {
+    public static class ComparatorLex implements Comparator<int[]> {
         @Override
-        public int compare(Persona p1, Persona p2) {
-            return p1.index - p2.index;
+        public int compare(int[] i1, int[] i2) {
+            if (i1.length == 0) return  1;
+            if (i2.length == 0) return -1;
+            
+        	
         }
     }
     
@@ -175,13 +206,6 @@ public class ProblemaB
         @Override
         public int compare(Persona p1, Persona p2) {
             return (p1.a - p2.a);
-        }
-    }
-    
-    public static class ComparatorB implements Comparator<Persona> {
-        @Override
-        public int compare(Persona p1, Persona p2) {
-            return -(p1.b - p2.b);
         }
     }
 }

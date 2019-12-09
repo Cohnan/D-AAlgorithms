@@ -1,0 +1,17 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class UndersLinkLists {
+	public static void main(String[] args) {
+		LinkedList<Integer> lista = new LinkedList<>();
+				
+		lista.add(2);
+		lista.add(3);
+		ListIterator<Integer> it = lista.listIterator();
+		System.out.println(it.nextIndex());
+		System.out.println(it.hasNext());
+		System.out.println(it.next());
+		
+		System.out.println(lista);
+	}
+}
