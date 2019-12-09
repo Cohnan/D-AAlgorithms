@@ -108,7 +108,7 @@ public class ProblemaB
             		
             		//########## Buscar indice donde ira el promovido (i.e. el del primero de su longitud vieja) -> i
             		
-            		itCandid.previous(); // La forma de contar hacia atras varia, pero quiero que i represente el elemento Act
+            		itCandid.previous();
             		while (itCandid.hasPrevious()) { // Se que empiezo en uno de la longitud vieja            			
             			candidAct = itCandid.previous(); i -= 1; 
             			
