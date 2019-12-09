@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 
 public class ProblemaB  
 { 
+	private static Persona[] listaOri;
 	private static Persona[] lista;
 	private static int N; 
 	
@@ -25,6 +26,7 @@ public class ProblemaB
         N = Integer.parseInt(reader.readLine());
         
         while (N != 0) {
+        	System.out.println("#################################");
         		// Crear arreglo a analizar
         	lista = new Persona[N];
         	for (int i = 0; i < N; i++) {
@@ -32,6 +34,7 @@ public class ProblemaB
         		lista[i] = new Persona(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
         	}
         	
+        	listaOri = Arrays.copyOf(lista, N); 
         	Arrays.sort(lista, new ComparatorA());
         	
         	/* Print array
@@ -49,40 +52,41 @@ public class ProblemaB
         		 * ****************************************************************
         		 */
         	for (Persona persAct : lista) {
+        		System.out.println(persAct.index + " " + persAct.a + " " + persAct.b);
         		int t = candidatos.size();
         			
-        		    // Caso especial: no hay aun candidatos
+        		    //########## Caso especial: no hay aun candidatos
         		if (candidatos.size() == 0) { 
         			candidatos.add(new int[] {persAct.index});
-        			
+        			imprimirCandidatos();
         		} else { // Hay al menos un candidato
         			
         		    //########## Buscar indice del primer candidato de arriba hacia abajo en el cual podemos anadir el b actual,
         			// es decir, el primero de arriba a abajo donde el b actual sea ESTRICTAMENTE menor
             		
-            		ListIterator<int[]> itCandid = candidatos.listIterator(0);
+            		ListIterator<int[]> itCandid = candidatos.listIterator();
             		int[] candidAct = new int[0];
             		int tCand = 0;
-            		int i = 0;
+            		int i = -1;
             		
             		while (itCandid.hasNext()) {
-            			candidAct = itCandid.next();
+            			candidAct = itCandid.next(); i += 1;
             			tCand = candidAct.length;
             			
             			if (B(candidAct[tCand-1]) > persAct.b) break;
-            			i += 1;
             		}
-            		
+            		System.out.print("Primer candidato " + i); System.out.println(" tCand " + tCand);
             		//########## Buscar, a partir del indice inicial i, el candidato hacia abajo de la misma longitud que es menor lexicograficamente
             		// pues es este el que me interesa promover y tener en mente
             		int imL = i;
             		int[] candidmL = candidAct;
             		ComparatorLex compLex = new ComparatorLex();
             		
-            		while (itCandid.hasNext()) {
+            		while (i < t-1) {
             			candidAct = itCandid.next(); i += 1; // Avanzar en 1
             			
             			if (candidAct.length < tCand) {
+            				itCandid.previous(); // Se que hay, porque acabo de hacer un next
             				candidAct = itCandid.previous(); i -= 1; // Creo que la puedo borrar
             				break;
             			}
@@ -91,16 +95,19 @@ public class ProblemaB
             				imL = i;
             				candidmL = candidAct;
             			}
-            		} // Sale cuando candidAct es el de mas abajo entre los de esta longitud
-            		
+            		} // Sale cuando candidAct (i) es inferior entre los de esta longitud
+            		System.out.println("imL: " + imL);
+            		System.out.print("Ind inferior "+ i); System.out.println(" Indic it " + (itCandid.nextIndex() - 1)); //System.out.println("candidato inferior " + candidAct[candidAct.length-1]);
             		//########## Crear el nuevo candidato basado en candidmL
             		int[] nuevoCand;
             		
             		nuevoCand = Arrays.copyOf(candidmL, candidmL.length + 1);
-            		nuevoCand[candidmL.length + 1] = persAct.index;
+            		nuevoCand[candidmL.length] = persAct.index;
             		
-            		//########## Buscar indice donde ira el promovido (i.e. el del primero de su longitud vieja)
-            		while (itCandid.hasPrevious()) { // Se que empiezo en uno de la longitud vieja
+            		//########## Buscar indice donde ira el promovido (i.e. el del primero de su longitud vieja) -> i
+            		if (i > 1) itCandid.previous();
+            		
+            		while (i > 0) { // Se que empiezo en uno de la longitud vieja            			
             			candidAct = itCandid.previous(); i -= 1; // Retroceder en 1
             			
             			if (candidAct.length > tCand) {
@@ -108,10 +115,10 @@ public class ProblemaB
             				break;
             			}
             		}
-            		
-            		//########## Borrar los elementos de longitud vieja que no me interesan TODO
+            		System.out.println("Indice de promocion " + i); 
+            		//########## Borrar los elementos de longitud vieja que no me interesan
             		// i.e. todos los elementos desde i inclusivo (i.e. primero de longitud vieja) hasta imL (exclusivo)
-            		for (int j = i; j < imL; j++) candidatos.remove(j);  // THIS MIGHT BE EXPENSIVE
+            		for (int j = i; j < imL; j++) candidatos.remove(j);  // THIS MIGHT BE EXPENSIVE  TODO
             		
             		
             		//######### Borrar los elementos de la longitud nueva que no me interesan  TODO
@@ -120,7 +127,8 @@ public class ProblemaB
             		
             		
             		//######### Agregar candidato nuevo!
-            		candidatos.add(nuevoCand);
+            		candidatos.add(i, nuevoCand);
+            		imprimirCandidatos();
         		}
         		
         	}
@@ -139,12 +147,8 @@ public class ProblemaB
     	return inFirstL.get(l);
     }*/
 
-	private static int A(int i) {
-    	return lista[i].a;
-    }
-    
     private static int B(int i) {
-    	return lista[i].b;
+    	return listaOri[i-1].b;
     }
     
     /*
@@ -180,6 +184,8 @@ public class ProblemaB
     public static class ComparatorLex implements Comparator<int[]> {
         @Override
         public int compare(int[] i1, int[] i2) {
+        	System.out.println("i1 " + i1);
+        	System.out.println("i2 " + i2);
             if (i1.length == 0) {
             	if (i2.length == 0) return  0;
             	return 1;
@@ -201,5 +207,22 @@ public class ProblemaB
         public int compare(Persona p1, Persona p2) {
             return (p1.a - p2.a);
         }
+    }
+
+    public static void imprimirCandidatos() {
+    	ListIterator<int[]> it = candidatos.listIterator();
+    	int[] candidato;
+    	String lineC = "";
+    	
+    	while (it.hasNext()) {
+    		candidato = it.next();
+    		
+    		for (Integer k : candidato) {
+    			lineC += "(" + k + ", " + B(k) + ") :: ";
+    		}
+    		System.out.println(lineC);
+    		lineC = "";
+    	}
+    	
     }
 }

@@ -12,10 +12,13 @@ public class UndersLinkLists {
 		System.out.println(it.previousIndex());
 		System.out.println(it.nextIndex());
 		System.out.println(it.hasNext());
-		System.out.println("El " + it.next());
+		System.out.println("Next " + it.next());
+		System.out.println(it.previousIndex());
+		System.out.println("Prev " + it.previous()); //Same as last next call result!!!
 		System.out.println(it.nextIndex());
+		System.out.println(it.hasNext());
 		//it.next();
-		System.out.println(it.previous());
+		//System.out.println(it.previous());
 		
 		System.out.println(lista);
 		
