@@ -1,3 +1,9 @@
+/*
+ * Sebastian Puerto
+ * 201318518
+ * Dalgo 20192
+ */
+
 import java.io.BufferedReader; 
 import java.io.IOException; 
 import java.io.InputStreamReader;
@@ -50,7 +56,7 @@ public class ProblemaB
         		
         		int t = candidatos.size();
         		
-        		    //########## Caso especial: no hay aun candidatos
+        		    //########## Caso especial: no hay aún candidatos
         		if (candidatos.size() == 0) { 
         			candidatos.add(new int[] {persAct.index});
         			

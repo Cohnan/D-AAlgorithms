@@ -1,3 +1,9 @@
+/*
+ * Sebastian Puerto
+ * 201318518
+ * Dalgo 20192
+ */
+
 import java.io.BufferedReader; 
 import java.io.IOException; 
 import java.io.InputStreamReader;
