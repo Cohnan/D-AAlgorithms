@@ -45,7 +45,6 @@ public class ProblemaA
         	
         	System.out.println(res);
         	
-        	N = Integer.parseInt(reader.readLine());
         } // FIN Programa
   
     } // FIN Main
@@ -60,7 +59,7 @@ public class ProblemaA
     	
     	// Ordenar suffix array respecto a primeros 2 elementos
     	Arrays.sort(sufArr, new ComparadorSuf());
-    	//imprimirsufArrC();
+    	imprimirsufArrC();
     	
     	// Ordenar suffix array respecto a los primeros 2h elementos,
     	// dado que esta ordenado por los primeros h
