@@ -66,22 +66,17 @@ public class ProblemaA
     		invSA[sufArr[0][0]] = 0;
     		
     		for (int i = 1; i < N; i++) {
-    			pr1 = sufArr[i][1];
-    			pr2 = sufArr[i][2]; // Si no modificara aun los segundos ranks, que no es necesario, podria evitar esta variable y esta linea
-    			
     			if (sufArr[i][1] == pr1 && sufArr[i][2] == pr2) { // Mismo h/2 bucket
     				sufArr[i][1] = sufArr[i-1][1]; // Hacer esto explicito en el primer rank
     			} else {
     				sufArr[i][1] = sufArr[i-1][1] + 1;
     			}
+    			/
     			
     			// Actualizar segundo rank y lista de inversas
-    			sufArr[i][2] = rankElIn(i+2);
-    			invSA[sufArr[i][0]] = i;
+    			
     		}
     		
-    		// Ordenar
-    		Arrays.sort(sufArr, new ComparadorSuf());
     	}
     	
     }

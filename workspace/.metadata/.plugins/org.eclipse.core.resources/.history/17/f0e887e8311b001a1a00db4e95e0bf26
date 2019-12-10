@@ -78,10 +78,9 @@ public class ProblemaA
     			// Actualizar segundo rank y lista de inversas
     			sufArr[i][2] = rankElIn(i+2);
     			invSA[sufArr[i][0]] = i;
+    			
     		}
     		
-    		// Ordenar
-    		Arrays.sort(sufArr, new ComparadorSuf());
     	}
     	
     }

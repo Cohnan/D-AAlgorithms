@@ -80,8 +80,6 @@ public class ProblemaA
     			invSA[sufArr[i][0]] = i;
     		}
     		
-    		// Ordenar
-    		Arrays.sort(sufArr, new ComparadorSuf());
     	}
     	
     }
