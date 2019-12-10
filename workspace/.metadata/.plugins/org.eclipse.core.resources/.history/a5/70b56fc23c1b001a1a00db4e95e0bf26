@@ -105,15 +105,14 @@ public class ProblemaA
     
     private static void calcularLCP() {
     	longComPre = new int[N];
-    	// Asegurarse de que el inverso sea un inverso completo
-        for (int i = 0; i < N; i++) invSA[sufArr[i][0]] = i;
-        
-        for (int i = 0, l = 0; i < N; i++) {
-          if (invSA[i] > 0) {
-            int k = sufArr[invSA[i] - 1][0];
-            while ((i + l < N) && (k + l < N) && arreglo[i + l] == arreglo[k + l]) l++;
-            longComPre[invSA[i] - 1] = l;
-            if (l > 0) l--;
+        int[] inv = new int[N];
+        for (int i = 0; i < N; i++) inv[sufArr[i][0]] = i;
+        for (int i = 0, len = 0; i < N; i++) {
+          if (inv[i] > 0) {
+            int k = sufArr[inv[i] - 1][0];
+            while ((i + len < N) && (k + len < N) && arreglo[i + len] == arreglo[k + len]) len++;
+            longComPre[inv[i] - 1] = len;
+            if (len > 0) len--;
           }
         }
     }
