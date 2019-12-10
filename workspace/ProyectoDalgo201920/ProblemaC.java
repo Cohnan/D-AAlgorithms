@@ -25,14 +25,14 @@ public class ProblemaC {
         String entrada1 = reader.readLine();
         
         while (!entrada1.contentEquals("0 0 0 0")) {
-        		// Entender linea 1
+        		// Entender linea 1 de entrada
         	st = new StringTokenizer(entrada1);
         	Max = Integer.parseInt(st.nextToken());
         	N = Integer.parseInt(st.nextToken());
         	a = Integer.parseInt(st.nextToken());
         	b = Integer.parseInt(st.nextToken());
         	
-        	if (Max < 1 || N < 3) break;
+        	if (Max < 1 || N < 3) break; // Por si acaso hay problema leyendo la linea de terminacion
         	
         		// Inicializar arreglos de vertices
         	x = new int[N+1];

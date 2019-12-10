@@ -135,8 +135,8 @@ class GFG
         //	txt += "a";
         //}
     	BufferedReader reader =  new BufferedReader(new InputStreamReader(System.in));
-    	
     	txt = reader.readLine();
+    	
         int n = txt.length();
         
         		// Execution and timing: this timing is worthless
@@ -145,6 +145,7 @@ class GFG
         //Instant start = Instant.now();
         //long startTime4 = new Date().getTime();
         int[] suff_arr = suffixArray(txt);
+        System.out.println(Arrays.toString(suff_arr));
         //long endTime = System.nanoTime();
         //long endTime2 = System.currentTimeMillis();
         //Instant end = Instant.now();

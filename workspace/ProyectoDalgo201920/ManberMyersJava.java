@@ -6,14 +6,19 @@ Write your code in this editor and press "Run" button to execute it.
 
 *******************************************************************************/
 import java.util.Collections;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Main
+public class ManberMyersJava
 {
-	public static void main(String[] args) {
-		System.out.println("Hello World");
+	public static void main(String[] args)  throws IOException {
+		//System.out.println("Hello World");
 		
-		String text = "acaaacatat";
+		BufferedReader reader =  new BufferedReader(new InputStreamReader(System.in));
+    	String text = reader.readLine();
+		//String text = "acaaacatat";
 		
 		int[] POS = new int[text.length()];         //Suffix array (output)
         int[] PRM = new int[text.length()];         //Inverse Suffix Array (PRM[POS[i]] = i)
@@ -27,7 +32,6 @@ public class Main
         This section sets all arrays according to the first stage
         Sets all the suffixes according to their first letter (Sets POS, PRM and BH arrays)
         */
-        long start =System.nanoTime();              //for time measuring
         
         java.util.HashMap<Character, Integer> Alphabet = new java.util.HashMap<Character, Integer>();
         int t = 0;
