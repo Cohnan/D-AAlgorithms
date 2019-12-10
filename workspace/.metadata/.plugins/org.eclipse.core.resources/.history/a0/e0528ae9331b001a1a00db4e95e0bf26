@@ -27,7 +27,7 @@ public class ProblemaA
         	st = new StringTokenizer(reader.readLine()); 
         	for (int i = 0; i < N; i++) {
         		arreglo[i] = Integer.parseInt(st.nextToken());
-        		//System.out.println(arreglo[i]);
+        		System.out.println(arreglo[i]);
         	}
         	
         	// Hallar el Suffix Array
@@ -45,12 +45,11 @@ public class ProblemaA
         
         // Inicializar suffix array con sus respectivos rangos
     	for (int i = 0; i < N; i++) {
-    		sufArr[i] = new int[] {i, rankElIn(i), rankElIn(i+1)};
+    		sufArr[i] = new int[] {i, rankElIn(i+1), rankElIn(i+2)};
     	}
     	
     	// Ordenar suffix array respecto a primeros 2 elementos
     	Arrays.sort(sufArr, new ComparadorSuf());
-    	imprimirsufArrC();
     	
     	// Ordenar suffix array respecto a los primeros 2h elementos,
     	// dado que esta ordenado por los primeros h
@@ -59,38 +58,38 @@ public class ProblemaA
     		// Recordar pareja de ranks del actual para evaluar los nuevos ranks
     		// del siguiente sufijo
     		int pr1 = sufArr[0][1];
+    		int pr2 = sufArr[0][2];
     		// Hacer primer rank como indicador de h/2-bucket, y
     		sufArr[0][1] = 0;
+    		sufArr[0][2] = rankElIn(0 + h/2);
     		// Actualizar lista de inversas (dado indice original, donde esta el sufijo en sufArr?)
     		invSA[sufArr[0][0]] = 0;
     		
     		for (int i = 1; i < N; i++) {
+    			pr1 = sufArr[i][1];
+    			pr2 = sufArr[i][2]; // Si no modificara aun los segundos ranks, que no es necesario, podria evitar esta variable y esta linea
     			
-    			if (sufArr[i][1] == pr1 && sufArr[i][2] == sufArr[i-1][2]) { // Mismo h/2 bucket
-    				//System.out.println("Entra " + (sufArr[i-1][1]) + i);
-    				pr1 = sufArr[i][1];
+    			if (sufArr[i][1] == pr1 && sufArr[i][2] == pr2) { // Mismo h/2 bucket
     				sufArr[i][1] = sufArr[i-1][1]; // Hacer esto explicito en el primer rank
     			} else {
-    				pr1 = sufArr[i][1];
     				sufArr[i][1] = sufArr[i-1][1] + 1;
     			}
+    			
+    			// Actualizar segundo rank y lista de inversas
+    			int indDecis = sufArr[0][0] + h/2;
+    			if (indDecis < N) {
+    				
+    			}
+    			sufArr[i][2] = rankElIn();
     			
     			invSA[sufArr[i][0]] = i;
     		}
     		
-    		int indDecis;
-    		for (int i = 0; i < N; i++) {
-    			// Actualizar segundo rank basado en el sufijo del sufijo actual
-    			indDecis = (sufArr[i][0] + h/2);
-    			sufArr[i][2] = indDecis < N? sufArr[invSA[indDecis]][1] : -1;
-    		}
-    		
     		// Ordenar para dejar suffix array en h-orden
     		Arrays.sort(sufArr, new ComparadorSuf());
-    		imprimirsufArrC();
-    	} // FINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+    	}
     	
-    	imprimirsufArrC();
+    	
     }
         
     public static class ComparadorSuf implements Comparator<int[]> {
@@ -103,15 +102,8 @@ public class ProblemaA
     	
     }
     
-    
     private static int rankElIn(int i) {
     	if (i < N) return arreglo[i]; 
     	return -1; // Cada numero del arreglo es no negativo
-    }
-    
-    private static void imprimirsufArrC() {
-    	String res = "";
-    	for (int[] el : sufArr) res += Arrays.toString(el) + " ";
-    	System.out.println(res);
     }
 }

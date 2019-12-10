@@ -80,7 +80,8 @@ public class ProblemaA
     		
     		int indDecis;
     		for (int i = 0; i < N; i++) {
-    			// Actualizar segundo rank basado en el sufijo del sufijo actual
+    			// Actualizar segundo rank
+    			//pr2 = sufArr[i][2]; // Si no modificara aun los segundos ranks, que no es necesario, podria evitar esta variable y esta linea
     			indDecis = (sufArr[i][0] + h/2);
     			sufArr[i][2] = indDecis < N? sufArr[invSA[indDecis]][1] : -1;
     		}

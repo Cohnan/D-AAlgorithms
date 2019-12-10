@@ -67,7 +67,7 @@ public class ProblemaA
     		for (int i = 1; i < N; i++) {
     			
     			if (sufArr[i][1] == pr1 && sufArr[i][2] == sufArr[i-1][2]) { // Mismo h/2 bucket
-    				//System.out.println("Entra " + (sufArr[i-1][1]) + i);
+    				System.out.println("Entra " + (sufArr[i-1][1]) + i);
     				pr1 = sufArr[i][1];
     				sufArr[i][1] = sufArr[i-1][1]; // Hacer esto explicito en el primer rank
     			} else {
@@ -78,10 +78,10 @@ public class ProblemaA
     			invSA[sufArr[i][0]] = i;
     		}
     		
-    		int indDecis;
     		for (int i = 0; i < N; i++) {
-    			// Actualizar segundo rank basado en el sufijo del sufijo actual
-    			indDecis = (sufArr[i][0] + h/2);
+    			// Actualizar segundo rank
+    			//pr2 = sufArr[i][2]; // Si no modificara aun los segundos ranks, que no es necesario, podria evitar esta variable y esta linea
+    			int indDecis = (sufArr[i][0] + h/2);
     			sufArr[i][2] = indDecis < N? sufArr[invSA[indDecis]][1] : -1;
     		}
     		
