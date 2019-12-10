@@ -50,7 +50,7 @@ public class ProblemaA
 		@Override
 		public int compare(int[] suf1, int[] suf2) {
 			if (suf1[1] == suf2[1]) return suf1[2] - suf2[2];
-			return suf1[1] - suf2[1];
+			return suf1[1] - suf[2];
 		}
     	
     }

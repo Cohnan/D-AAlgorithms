@@ -45,12 +45,12 @@ public class ProblemaA
     	
     }
         
-    public static class ComparadorSuf implements Comparator<int[]> {
+    public static class ComparadorSuf implements Comparator<int[][]> {
 
 		@Override
-		public int compare(int[] suf1, int[] suf2) {
-			if (suf1[1] == suf2[1]) return suf1[2] - suf2[2];
-			return suf1[1] - suf2[1];
+		public int compare(int[][] o1, int[][] o2) {
+			// TODO Auto-generated method stub
+			return 0;
 		}
     	
     }

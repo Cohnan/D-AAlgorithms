@@ -4,7 +4,7 @@ import java.util.ListIterator;
 
 public class UndersLinkLists {
 	public static void main(String[] args) {
-		System.out.println(Integer.compare(1, 2) < 0);
+		System.out.println(Integer.compare(1, 2);
 		
 		LinkedList<Integer> lista = new LinkedList<>();
 				
